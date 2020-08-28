@@ -1,0 +1,15 @@
+<header>
+    <div id="search-container">
+        <form id="searchForm" class="animate__animated animate__fadeIn animate__slow">
+               
+                <input type="text" 
+                placeholder="search by breed">
+                <button type="submit"><i class="fas fa-search"></i></button>
+                <div *ngIf="keywords"
+                id="search-result">
+                    <p>busqueda</p>
+                </div>
+        </form>
+    </div>
+
+</header>

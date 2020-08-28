@@ -1,0 +1,80 @@
+/* ============Cards============ */
+
+.cards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.cards > div:first-child {
+    grid-column: 1/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.card{
+    min-height: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    box-shadow:
+        0 0px 4.2px -2px rgba(0, 0, 0, 0.2),
+        0 0px 9.6px -2px rgba(0, 0, 0, 0.063),
+        0 0px 30px -2px rgba(0, 0, 0, 0.03);
+}
+
+.card > img{
+    width: 100%;
+    height: 250px;
+    border-radius: 10px 10px 0 0;
+    opacity: 1;
+    transition: opacity 400ms;
+}
+
+.card:hover > img{
+    opacity: 0.70;
+}
+
+.card .card-info{
+    width: 100%;
+    min-height: 50px;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+    line-height: 50px;
+}
+
+#pagination{
+    grid-column: 1/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination #loadBtn{
+    background-color: var(--secondaryColor);
+    flex-basis: 20%;
+    height: 60px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0.70;
+    transition: opacity 400ms;
+}
+
+#pagination #loadBtn > i{
+    font-size: 22px;
+}
+
+
+#pagination #loadBtn:hover{
+    opacity: 1;
+}
+

@@ -1,0 +1,61 @@
+/* ============Search Component============ */
+
+#search-container{
+    flex-basis: 50%;
+    /* background-color: var(--primaryColor); */
+}
+
+#searchForm{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#searchForm input[type="text"],
+#searchForm button{
+    height: 60px;
+    border: none;
+    opacity: .70;
+}
+
+#searchForm input[type="text"]{
+    flex-basis: 85%;
+    padding-left: 10px;
+    outline: none;
+    font-size: 20px;
+    transition: opacity 400ms;
+}
+
+#searchForm input[type="text"]:focus{
+    opacity: 1;
+}
+
+#searchForm button{
+    flex-basis: 15%;
+    background-color: var(--secondaryColor);
+    color: white;
+    border-radius: 0px 10px 10px 0px;
+    transition: opacity 400ms;
+    cursor: pointer;
+    outline: none;
+}
+
+#searchForm button:hover{
+    opacity: 1;
+}
+
+
+#searchForm button i{
+    font-size: 30px;
+}
+
+#search-result{
+    background-color: white;
+    flex-basis: 85%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    display: none;
+    transition: opacity 400ms;
+}
