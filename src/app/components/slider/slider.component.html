@@ -1,12 +1,18 @@
 <section class="container">
-    <div id="slider-container">
+    <div id="slider-container"
+         >
         <button (click)="prev()" class="prev"><i class="fas fa-chevron-circle-left"></i></button>
         <button (click)="next()" class="next"><i class="fas fa-chevron-circle-right"></i></button>
-        
-        <div *ngFor="let img of images | slice:sliderPosition:sliderStop"
-             class="slider-item animate__animated animate__fadeIn">
-            <img [src]="img.src ">
-            <span>Categoria</span>
+        <div *ngFor="let dog of category | slice:sliderPosition:sliderStop"
+             class="slider-item animate__animated animate__fadeIn"
+             (click)="goToDog( dog.id )">
+            <img *ngIf="dog.img"
+                 class="animate__animated animate__fadeIn animate__slow" 
+                 [src]="dog.img ">
+            <h3 *ngIf="dog.img"
+                  class="animate__animated animate__fadeIn">
+                  {{dog.name}}
+            </h3>
         </div>     
     </div>
 </section>

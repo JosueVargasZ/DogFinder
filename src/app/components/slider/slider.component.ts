@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { DogService } from '../../services/dog.service';
+import { DogResponse } from '../../interfaces/dog.models';
 
 
 @Component({
@@ -10,24 +12,23 @@ import { DogService } from '../../services/dog.service';
 })
 export class SliderComponent implements OnInit {
 
+  @Input() categories:string;
+
   sliderJump    :number = 4;
   sliderPosition:number;
   sliderStop    :number;
-  images        :object[] =[{src: '../../../assets/img/doggy.jpg'},
-                     {src: '../../../assets/img/doggy2.jpg'},
-                     {src: '../../../assets/img/doggy3.jpg'},
-                     {src: '../../../assets/img/doggy4.jpg'},
-                     {src: '../../../assets/img/doggy5.jpg'},
-                     {src: '../../../assets/img/doggy6.jpg'},
-                     {src: '../../../assets/img/doggy7.jpg'}
-                    ]; 
+  category   :DogResponse[] =[]; 
 
-  constructor( private _dogService: DogService ) {
+  constructor( private _dogService: DogService,
+               private _router: Router ) {
     this.sliderPosition = 0;
     this.sliderStop = this.sliderJump;
    }
 
   ngOnInit(): void {
+    this._dogService.getCategories(this.categories).subscribe( ( resp: DogResponse[] ) =>{
+      this.category.push( ...resp );
+    });
   }
 
   prev(){
@@ -40,11 +41,15 @@ export class SliderComponent implements OnInit {
 
 
   next(){
-    if( (this.sliderPosition + this.sliderJump) === this.images.length ){
+    if( (this.sliderPosition + this.sliderJump) === this.category.length ){
       return;
     }
     this.sliderPosition++;
     this.sliderStop = this.sliderPosition + this.sliderJump;
+  }
+
+  goToDog( id:number ){
+    this._router.navigate(['breed/',id.toString()]);
   }
 
 }

@@ -4,13 +4,14 @@
             <h1>List of all Breeds</h1>
         </div>
         <div class="card animate__animated animate__fadeIn animate__slow"
-             *ngFor="let image of images">
-            <img *ngIf="image.img" 
-                 [src]="image.img"
+             *ngFor="let breed of breeds"
+             (click)="goToDog( breed.id )">
+            <img *ngIf="breed.img" 
+                 [src]="breed.img"
             >
             <div class="card-info"
-                 *ngIf="image.img">
-                <h2>{{ image.name }}</h2>
+                 *ngIf="breed.img">
+                <h2>{{ breed.name }}</h2>
             </div>
         </div>
         <div id="pagination">

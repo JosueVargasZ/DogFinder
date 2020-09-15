@@ -1,3 +1,8 @@
 <app-search></app-search>
-<app-slider></app-slider>
+<h1 class="titles">Find the perfect dog breed for you</h1>
+<app-slider *ngIf="category" 
+            [categories]="category"
+            [title]="false"
+            >
+</app-slider>
 <app-breed-cards></app-breed-cards>

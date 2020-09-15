@@ -1,13 +1,27 @@
 <header>
     <div id="search-container">
-        <form id="searchForm" class="animate__animated animate__fadeIn animate__slow">
+        <h1>Find Your Perfect Dog Breed</h1>
+        <form id="searchForm" 
+              class="animate__animated animate__fadeIn">
                
                 <input type="text" 
-                placeholder="search by breed">
-                <button type="submit"><i class="fas fa-search"></i></button>
-                <div *ngIf="keywords"
-                id="search-result">
-                    <p>busqueda</p>
+                       placeholder="search by breed"
+                       #search
+                       (keyup)="searchBreed( search.value )"
+                       (focus)="searchBreed( search.value )"
+                       (blur)="hideResults()"
+                >
+                <button type="button"
+                        (click)="searchBreed( search.value )"
+                >
+                        <i class="fas fa-search"></i></button>
+                <div *ngIf="showBreeds"
+                     [class]="resultAnimation"
+                     id="search-result">
+                    <div *ngFor="let dog of results"
+                    (click)="goToDog(dog.id)">
+                        <p>{{dog.name}}</p>
+                    </div>
                 </div>
         </form>
     </div>

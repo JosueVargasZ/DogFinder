@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
 
 import { DogService } from '../../services/dog.service';
 import { DogResponse } from '../../interfaces/dog.models';
@@ -10,15 +12,16 @@ import { DogResponse } from '../../interfaces/dog.models';
 })
 export class BreedCardsComponent implements OnInit {
 
-  images: DogResponse[] =[];
+  breeds: DogResponse[] =[];
   pageIterator: number = 0;
   loadingBreeds: boolean = false;
 
-  constructor( private _dogService: DogService) { }
+  constructor( private _dogService: DogService,
+               private _router: Router ) { }
 
   ngOnInit(): void {
     this._dogService.getBreeds(this.pageIterator).subscribe( ( resp:DogResponse[] ) =>{
-      this.images = resp;
+      this.breeds = resp;
     })
   }
 
@@ -26,11 +29,15 @@ export class BreedCardsComponent implements OnInit {
     this.loadingBreeds = true;
     this.pageIterator++;
     this._dogService.getBreeds( this.pageIterator ).subscribe( resp =>{
-      this.images.push( ...resp );
+      this.breeds.push( ...resp );
       this.loadingBreeds = false;
     },() => {
       return;
     });
+  }
+
+  goToDog( id:number ){
+    this._router.navigate(['breed/',id.toString()]);
   }
 
 }

@@ -1,0 +1,7 @@
+<section id="dog-categories">
+    <ng-container *ngFor="let category of categories">
+        <h1>{{category.name}} Dogs</h1>
+        <app-slider [categories]="category.name">
+        </app-slider>
+    </ng-container>
+</section>

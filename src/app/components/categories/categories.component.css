@@ -1,0 +1,13 @@
+#dog-categories{
+    background-color: #ffffff;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    min-height: 500px;
+    color: var(--titlesColor);
+}
+
+#dog-categories > h1{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}

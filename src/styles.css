@@ -6,14 +6,21 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
+
+
 :root{
     --primaryColor: #2372F5;
     --secondaryColor: #F5A623;
+    --titlesColor: #4D4751;
 }
 
 header{
     width: 100%;
-    height: 400px;
+    height: 100vh;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;

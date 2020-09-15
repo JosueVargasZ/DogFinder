@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { DogResponse } from '../interfaces/dog.models';
-import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +24,24 @@ export class DogService {
       return this.http.get(url, { headers });
   }
 
+  searchBreed( query:string ){
+    // breeds/search
+    const params = new HttpParams()
+    .set('q', query);
+
+    return this.getQuery( 'breeds/search' , params);
+  }
+
+  getBreed( id:string ){
+    const params = new HttpParams()
+          .set('breed_id', id)
+          .set('size', 'full');
+
+    return this.getQuery('images/search', params );
+
+  }
+
+
   getBreeds( page: number ){
     let limit: number = 10; 
     const params = new HttpParams()
@@ -45,13 +62,35 @@ export class DogService {
            );
   }
 
-  getCategories(){
-    // TODO: Get categories by breed_Group
+  getAllBreeds(){
+    return this.getQuery('breeds')
+    .pipe(
+      map( (resp: DogResponse[] ) => {
+        return resp.map( dog =>{
+          this.getImage( dog.id.toString() ).subscribe(image =>{
+            dog.img = image;
+          });
+          return dog;
+        });
+        })
+     );
   }
+
+  getCategories( category: string ){
+    return this.getAllBreeds()
+    .pipe(
+      map( (resp: DogResponse[]) =>{
+        return resp.filter( dog => dog.breed_group === category );
+      })
+    );
+   }
+
+  
 
   getImage( id:string ){
     const params = new HttpParams()
-          .set('breed_id', id);
+          .set('breed_id', id)
+          .set('size', 'small');
 
     return this.getQuery('images/search', params )
            .pipe(

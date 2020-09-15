@@ -2,15 +2,18 @@
 
 .cards{
     width: 100%;
+    min-height: 900px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    padding-bottom: 50px;
+    color: var(--titlesColor);
 }
 
 .cards > div:first-child {
     grid-column: 1/4;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -38,6 +41,16 @@
 .card:hover > img{
     opacity: 0.70;
 }
+
+.card:hover .card-info > h2{
+    color: var(--primaryColor);
+}
+
+.card .card-info > h2{
+    transition: color 400ms;
+}
+
+
 
 .card .card-info{
     width: 100%;

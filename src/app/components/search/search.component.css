@@ -2,13 +2,27 @@
 
 #search-container{
     flex-basis: 50%;
-    /* background-color: var(--primaryColor); */
+    background-color: #eeeeeea2;
+    padding: 15px;
+    text-align: center;
 }
+
+#search-container > h1{
+    font-size: 30px;
+    font-weight: bolder;
+    width: 430px;
+    margin: 0 auto;
+    color: #1a3665;
+    margin-top: 22px;
+}
+
 
 #searchForm{
     display: flex;
+    height: 90px;
+    margin-top: 20px;
     flex-flow: row wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
@@ -52,10 +66,27 @@
 
 #search-result{
     background-color: white;
+    overflow-y: scroll;
     flex-basis: 85%;
-    height: 120px;
+    max-height: 190px;
     padding: 10px;
     border-radius: 0 0 10px 10px;
-    display: none;
-    transition: opacity 400ms;
 }
+
+#search-result > div{
+    height: 60px;
+    border-bottom: 1px solid #ccc;
+    line-height: 60px;
+    cursor: pointer;
+}
+
+#search-result > div > p {
+    text-align: left;
+}
+
+
+#search-result > div:first-child {
+    border-top: 1px solid #ccc;
+}
+
+
